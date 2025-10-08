@@ -1,7 +1,13 @@
 /* =======================================================
    ESTRUCTURA BASE DE LA PÁGINA (Asegura el Sticky Footer)
    ======================================================= */
-
+* {
+    /* Incluye el padding y el borde dentro del ancho total. */
+    box-sizing: border-box; 
+    /* ¡Elimina cualquier margen y padding por defecto de CUALQUIER elemento! */
+    margin: 0; 
+    padding: 0;
+}
 html {
     /* Establece la altura del elemento raíz (la página entera) al 100% de la ventana.
        Esto es crucial para que el <body> pueda expandirse y empujar el footer. */
@@ -22,7 +28,6 @@ html {
     /* Elimina el margen por defecto que algunos navegadores aplican al <body>.
        Este margen es la causa más común de que los elementos de ancho 100%
        no ocupen toda la pantalla. */
-    margin: 0; 
 }
 
 /* =======================================================
@@ -52,6 +57,9 @@ main {
     color: #1A1A1A; 
     /* Espaciado alrededor del título. */
     padding-bottom: 30px;
+    display: flex; /* Coloca la imagen y el texto en una misma línea */
+    gap: 15px;  
+
 }
 
 main p {
@@ -84,14 +92,36 @@ main p {
     flex-direction: column; /* Apila el texto y los botones verticalmente. */
     align-items: center; /* Centra todo el contenido (texto y botones) horizontalmente. */
 }
+.menu a {
+    color:black; /* Color de acento Cian */
+    text-decoration: none;
+    font-weight: bold;
+}
+.navegacion {
+    /* Fondo Azul Navy Oscuro: Color de confianza y profesionalismo. */
+    background-color: #003366;
+    /* Color de texto blanco: Alto contraste con el fondo oscuro. */
+    color: white; 
+    /* Relleno interno para darle "aire" al contenido del footer. */
+    padding: 30px 20px;
+    /* Se adhiere al fondo gracias a flex-grow: 1 en <main>. */
+    margin-top: auto;
+    /* Asegura que el footer ocupe el 100% del ancho de la ventana. */
+    width: 100%;
+    
+    /* Configuración de Flexbox para organizar el contenido interno */
+    display: flex; 
+    flex-direction: column; /* Apila el texto y los botones verticalmente. */
+    align-items: center; /* Centra todo el contenido (texto y botones) horizontalmente. */
 
+}
 .footer p {
     /* Estilo del texto dentro del footer (Copyright y Contactame). */
     margin: 5px 0; /* Poco espacio entre las líneas de texto. */
     font-size: 16px;
     text-align: center;
+    
 }
-
 
 /* =======================================================
    ESTILOS DEL ÁREA DE CONTACTO (Botones de Llamada a la Acción)
@@ -105,7 +135,7 @@ main p {
     /* Centra los botones dentro del div .contacto. */
     justify-content: center;
     /* Espacio superior para separarlos del texto "Contactame a traves de:". */
-    margin-top: 15px; 
+    
 }
 
 .contacto a {
@@ -131,4 +161,89 @@ main p {
     background-color: #0097A7; 
     /* Pequeña elevación al hacer hover. */
     transform: translateY(-2px);
+}
+.titulo img{
+  width: 100px;               /* Tamaño de la imagen */
+  height: 100px;              /* La hace cuadrada */
+  object-fit: cover;          /* Asegura que no se deforme */
+  border: 3px solid #333;     /* Marco (puedes cambiar el color) */
+  border-radius: 10px;        /* Bordes ligeramente redondeados */
+}
+/* =======================================================
+   ESTILOS DE CONTENIDO PRINCIPAL (<main>)
+   ======================================================= */
+
+main {
+    /* ... (Reglas de main se mantienen) ... */
+    flex-grow: 1;
+    background-color: #F8F8F8;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 1. CLASE DESUSADA: ELIMINA LAS REGLAS FLEXBOX DE .titulo */
+/* Usamos h1 directamente en hero-left y lo hacemos más grande para el efecto */
+.hero-left h1 {
+    font-size: 70px; /* Tamaño grande para el efecto visual que buscas */
+    line-height: 1.1;
+    text-align: left; /* Alineación izquierda en esta columna */
+    color: #1A1A1A;
+}
+
+
+/* 2. NUEVA SECCIÓN HERO: CONTENEDOR DE DOS COLUMNAS */
+.hero-section {
+    display: flex; /* Habilita Flexbox */
+    align-items: center; /* Alinea verticalmente los ítems al centro */
+    gap: 40px; /* Espacio entre las dos columnas */
+    padding: 50px 0;
+}
+
+/* 3. COLUMNAS: DISTRIBUCIÓN DE ANCHO */
+.hero-left {
+    /* La columna del título ocupa una parte del espacio */
+    flex: 1; 
+    text-align: center;
+}
+.hero-right {
+    /* La columna de la descripción ocupa el espacio restante */
+    flex: 2; 
+}
+
+/* 4. ESTILO DE IMAGEN: CENTRADA Y REDONDEADA */
+.hero-right .foto {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 100%; /* ¡La hace redonda! */
+    float: left; /* Hace que la imagen flote a la izquierda del texto */
+    margin-right: 15px; /* Espacio entre la imagen y el texto */
+    margin-bottom: 10px;
+}
+
+/* 5. ESTILOS DE PÁRRAFO: SE MANTIENEN PERO SIN JUSTIFICAR */
+.hero-right p {
+    font-size: 16px; 
+    line-height: 1.6;
+    color: #333333;
+    /* Quitamos el justify para que el texto fluya mejor alrededor de la imagen */
+    text-align: left; 
+}
+
+/* (Opcional) Media Query para Móviles: Las columnas se apilan */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column; /* Apila las columnas */
+        text-align: center;
+    }
+    .hero-left h1 {
+        font-size: 40px; /* Reduce el título */
+        text-align: center;
+    }
+    .hero-right .foto {
+        float: none; /* Desactiva el float en móviles */
+        display: block;
+        margin: 0 auto 15px; /* Centra la imagen */
+    }
 }
