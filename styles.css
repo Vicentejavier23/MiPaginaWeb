@@ -34,7 +34,7 @@ html {
    ESTILOS DE CONTENIDO PRINCIPAL (<main>)
    ======================================================= */
 
-main {
+.main {
     /* Esta es la regla clave: Le dice a <main> que ocupe todo el espacio vertical sobrante.
        Esto "empuja" al <footer> hasta la parte inferior de la página. */
     flex-grow: 1;
