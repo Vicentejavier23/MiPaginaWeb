@@ -124,7 +124,7 @@ main p {
 }
 
 /* =======================================================
-   ESTILOS DEL ÁREA DE CONTACTO (Botones de Llamada a la Acción)
+ESTILOS DEL ÁREA DE CONTACTO (Botones de Llamada a la Acción)
    ======================================================= */
 
 .contacto {
@@ -173,7 +173,7 @@ main p {
    ESTILOS DE CONTENIDO PRINCIPAL (<main>)
    ======================================================= */
 
-main {
+.main {
     /* ... (Reglas de main se mantienen) ... */
     flex-grow: 1;
     background-color: #F8F8F8;
