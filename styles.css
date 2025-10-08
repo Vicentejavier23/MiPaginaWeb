@@ -86,11 +86,13 @@ main p {
     margin-top: auto;
     /* Asegura que el footer ocupe el 100% del ancho de la ventana. */
     width: 100%;
-    
+    height: auto;
     /* Configuración de Flexbox para organizar el contenido interno */
     display: flex; 
     flex-direction: column; /* Apila el texto y los botones verticalmente. */
     align-items: center; /* Centra todo el contenido (texto y botones) horizontalmente. */
+    margin: 0 auto;
+    flex-grow: 1;
 }
 .menu a {
     color:black; /* Color de acento Cian */
