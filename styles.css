@@ -1,0 +1,134 @@
+/* =======================================================
+   ESTRUCTURA BASE DE LA PÁGINA (Asegura el Sticky Footer)
+   ======================================================= */
+
+html {
+    /* Establece la altura del elemento raíz (la página entera) al 100% de la ventana.
+       Esto es crucial para que el <body> pueda expandirse y empujar el footer. */
+    height: 100%;
+}
+
+.body {
+    /* Fondo principal: Gris muy claro (casi blanco) para una lectura cómoda.
+       Es menos agresivo que el blanco puro y es ideal para el contenido principal. */
+    background-color: #F8F8F8;
+    /* Fuerza al body a ocupar al menos la altura completa de la ventana (viewport height).
+       Necesario para que el footer se quede abajo incluso con poco contenido. */
+    min-height: 100vh;
+    /* Habilita Flexbox: Convierte el <body> en un contenedor flexible. */
+    display: flex; 
+    /* Coloca los elementos hijos (main y footer) uno encima del otro. */
+    flex-direction: column; 
+    /* Elimina el margen por defecto que algunos navegadores aplican al <body>.
+       Este margen es la causa más común de que los elementos de ancho 100%
+       no ocupen toda la pantalla. */
+    margin: 0; 
+}
+
+/* =======================================================
+   ESTILOS DE CONTENIDO PRINCIPAL (<main>)
+   ======================================================= */
+
+main {
+    /* Esta es la regla clave: Le dice a <main> que ocupe todo el espacio vertical sobrante.
+       Esto "empuja" al <footer> hasta la parte inferior de la página. */
+    flex-grow: 1;
+    /* Fondo idéntico al del body para una apariencia uniforme. */
+    background-color: #F8F8F8;
+    /* Relleno interno para que el texto no se pegue a los bordes de la ventana. */
+    padding: 40px 20px;
+    /* Centra el contenido horizontalmente y limita el ancho para mejor legibilidad
+       en pantallas grandes. */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.titulo {
+    /* Define el tamaño de fuente grande para el encabezado. */
+    font-size: 48px;
+    /* Centra el texto del título. */
+    text-align: center;
+    /* Color de texto negro muy oscuro para un alto contraste (AAA de accesibilidad). */
+    color: #1A1A1A; 
+    /* Espaciado alrededor del título. */
+    padding-bottom: 30px;
+}
+
+main p {
+    /* Estilo para los párrafos de texto */
+    font-size: 18px;
+    line-height: 1.6; /* Aumenta el espaciado entre líneas para mejor lectura */
+    color: #333333; /* Color gris oscuro para el cuerpo de texto */
+    margin-bottom: 20px;
+    text-align: justify; /* Justifica el texto para un look más formal */
+}
+
+/* =======================================================
+   ESTILOS DEL PIE DE PÁGINA (<footer> y .footer)
+   ======================================================= */
+
+.footer {
+    /* Fondo Azul Navy Oscuro: Color de confianza y profesionalismo. */
+    background-color: #003366;
+    /* Color de texto blanco: Alto contraste con el fondo oscuro. */
+    color: white; 
+    /* Relleno interno para darle "aire" al contenido del footer. */
+    padding: 30px 20px;
+    /* Se adhiere al fondo gracias a flex-grow: 1 en <main>. */
+    margin-top: auto;
+    /* Asegura que el footer ocupe el 100% del ancho de la ventana. */
+    width: 100%;
+    
+    /* Configuración de Flexbox para organizar el contenido interno */
+    display: flex; 
+    flex-direction: column; /* Apila el texto y los botones verticalmente. */
+    align-items: center; /* Centra todo el contenido (texto y botones) horizontalmente. */
+}
+
+.footer p {
+    /* Estilo del texto dentro del footer (Copyright y Contactame). */
+    margin: 5px 0; /* Poco espacio entre las líneas de texto. */
+    font-size: 16px;
+    text-align: center;
+}
+
+
+/* =======================================================
+   ESTILOS DEL ÁREA DE CONTACTO (Botones de Llamada a la Acción)
+   ======================================================= */
+
+.contacto {
+    /* Habilita Flexbox: Convierte este div en un contenedor flexible. */
+    display: flex;
+    /* Define el espacio entre los botones. */
+    gap: 20px;
+    /* Centra los botones dentro del div .contacto. */
+    justify-content: center;
+    /* Espacio superior para separarlos del texto "Contactame a traves de:". */
+    margin-top: 15px; 
+}
+
+.contacto a {
+    /* Fondo Azul Cían Brillante: Llamativo, moderno y contrasta bien con el Navy. */
+    background-color: #00BCD4; 
+    /* Color de texto del botón. */
+    color: #1A1A1A; /* Texto oscuro sobre el botón brillante para alto contraste. */
+    /* Espacio interno para que los botones se vean grandes y fáciles de clickear. */
+    padding: 12px 25px;
+    /* Remueve el subrayado por defecto de los enlaces. */
+    text-decoration: none;
+    /* Bordes redondeados para un toque moderno. */
+    border-radius: 8px;
+    /* Añade una sombra sutil para darle profundidad y que el botón resalte. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    /* Transición suave para los efectos hover. */
+    transition: background-color 0.3s, transform 0.1s;
+    font-weight: bold;
+}
+
+.contacto a:hover {
+    /* Efecto al pasar el ratón: Oscurece el botón ligeramente para dar feedback. */
+    background-color: #0097A7; 
+    /* Pequeña elevación al hacer hover. */
+    transform: translateY(-2px);
+}
