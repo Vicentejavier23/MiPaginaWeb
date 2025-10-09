@@ -1,251 +1,260 @@
 /* =======================================================
-   ESTRUCTURA BASE DE LA PÁGINA (Asegura el Sticky Footer)
+   | HOJA DE ESTILOS PROFESIONAL CON COMENTARIOS CLAROS |
    ======================================================= */
+
+/* -------------------------------------------------------
+   1. CONFIGURACIÓN INICIAL Y VARIABLES DE DISEÑO (Fácil de Cambiar)
+   ------------------------------------------------------- */
+
+:root {
+    /* 🎨 VARIABLES: Colores, Espaciados y Tamaños (¡Centraliza todo aquí!) */
+
+    /* Paleta de Colores Principal */
+    --color-navy: #003366;           /* Azul Oscuro (Para el fondo del pie de página y menú) */
+    --color-cyan: #00BCD4;           /* Azul Cian Brillante (Color principal de acento, ¡Llamativo!) */
+    --color-cian-hover: #0097A7;     /* Tono del Cian más oscuro (Para el efecto al pasar el ratón por los botones) */
+    --color-gris-claro: #F8F8F8;     /* Gris muy Claro (Fondo principal de la página, suave para la vista) */
+    --color-texto-principal: #1A1A1A; /* Negro Oscuro (Texto de títulos, alto contraste para accesibilidad) */
+    --color-texto-secundario: #333333; /* Gris Oscuro (Color para el cuerpo de texto) */
+    
+    /* Variables de Espaciado/Tamaño (Usamos nombres para ser consistentes) */
+    --espaciado-xs: 5px;             /* Espacio muy pequeño */
+    --espaciado-sm: 15px;            /* Espacio pequeño */
+    --espaciado-md: 20px;            /* Espacio medio */
+    --espaciado-lg: 30px;            /* Espacio grande */
+    --espaciado-xl: 40px;            /* Espacio extra grande */
+    --max-ancho-contenido: 900px;    /* Ancho máximo que ocupará el contenido central (Mejora la lectura) */
+    
+    /* Tipografía Base (Para que el texto ESCALE bien con la configuración del usuario) */
+    font-size: 16px;                 /* Establece el tamaño base para la unidad 'rem' (1rem = 16px) */
+}
+
+/* Reset Universal (Asegura que todos los navegadores empiecen igual) */
 * {
-    /* Incluye el padding y el borde dentro del ancho total. */
+    /* box-sizing: Mantiene el modelo de caja predecible (incluye padding y borde en el ancho). */
     box-sizing: border-box; 
-    /* ¡Elimina cualquier margen y padding por defecto de CUALQUIER elemento! */
+    /* Elimina cualquier margen o relleno por defecto de TODOS los elementos. */
     margin: 0; 
     padding: 0;
 }
+
+/* Base de la Página (¡Configuración CLAVE para el pie de página fijo abajo!) */
 html {
-    /* Establece la altura del elemento raíz (la página entera) al 100% de la ventana.
-       Esto es crucial para que el <body> pueda expandirse y empujar el footer. */
-    height: 100%;
+    height: 100%;                      /* Obliga al elemento raíz (la página) a ocupar toda la altura. */
+    scroll-behavior: smooth;           /* Hace que la navegación con anclas (saltar a secciones) sea suave. */
 }
 
 .body {
-    /* Fondo principal: Gris muy claro (casi blanco) para una lectura cómoda.
-       Es menos agresivo que el blanco puro y es ideal para el contenido principal. */
-    background-color: #F8F8F8;
-    /* Fuerza al body a ocupar al menos la altura completa de la ventana (viewport height).
-       Necesario para que el footer se quede abajo incluso con poco contenido. */
-    min-height: 100vh;
-    /* Habilita Flexbox: Convierte el <body> en un contenedor flexible. */
-    display: flex; 
-    /* Coloca los elementos hijos (main y footer) uno encima del otro. */
-    flex-direction: column; 
-    /* Elimina el margen por defecto que algunos navegadores aplican al <body>.
-       Este margen es la causa más común de que los elementos de ancho 100%
-       no ocupen toda la pantalla. */
+    /* 🎨 Diseño Principal */
+    background-color: var(--color-gris-claro); /* Usa el gris claro definido en las variables. */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Fuente moderna y legible que carga rápido. */
+    line-height: 1.6;                  /* Espaciado entre líneas del texto (Mejora la legibilidad). */
+
+    /* 🏗️ Estructura Sticky Footer */
+    min-height: 100vh;                 /* Fuerza al cuerpo a ocupar al menos el 100% de la altura de la ventana. */
+    display: flex;                     /* Convierte el cuerpo en un contenedor flexible. */
+    flex-direction: column;            /* Apila los elementos hijos (Menú, Contenido, Footer) verticalmente. */
 }
 
-/* =======================================================
-   ESTILOS DE CONTENIDO PRINCIPAL (<main>)
-   ======================================================= */
+/* -------------------------------------------------------
+   2. NAVEGACIÓN SUPERIOR (Menú)
+   ------------------------------------------------------- */
+
+.navegacion {
+    background-color: var(--color-navy); /* Fondo Azul Oscuro, tomado de las variables. */
+    color: white;                      /* Color de texto blanco. */
+    padding: var(--espaciado-lg) var(--espaciado-md); /* Relleno alrededor del menú. */
+    width: 100%;                       /* Ocupa todo el ancho de la pantalla. */
+    display: flex; 
+    flex-direction: column;            /* Apila el logo y los enlaces si es necesario. */
+    align-items: center;               /* Centra el contenido del menú horizontalmente. */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para que el menú "flote". */
+}
+
+.menu a {
+    color: var(--color-cyan);          /* Color de acento para que los enlaces resalten. */
+    text-decoration: none;             /* Quita el subrayado por defecto de los enlaces. */
+    font-weight: 600;                  /* Hace el texto un poco más grueso. */
+    padding: var(--espaciado-xs) var(--espaciado-sm); /* Espacio alrededor de cada enlace. */
+    transition: color 0.3s ease-in-out; /* Transición suave del color al pasar el ratón. */
+}
+
+.menu a:hover,
+.menu a:focus { /* Añadimos :focus: CLAVE para la accesibilidad con teclado */
+    color: white;                      /* Cambia a blanco al pasar el ratón o al seleccionar con el teclado. */
+    outline: 2px solid var(--color-cyan); /* Dibuja un borde de foco visible (Accesibilidad). */
+    outline-offset: 2px;               /* Separa el borde de foco del texto. */
+}
+
+/* -------------------------------------------------------
+   3. CONTENIDO PRINCIPAL (<main>)
+   ------------------------------------------------------- */
 
 .main {
-    /* Esta es la regla clave: Le dice a <main> que ocupe todo el espacio vertical sobrante.
-       Esto "empuja" al <footer> hasta la parte inferior de la página. */
-    flex-grow: 1;
-    /* Fondo idéntico al del body para una apariencia uniforme. */
-    background-color: #F8F8F8;
-    /* Relleno interno para que el texto no se pegue a los bordes de la ventana. */
-    padding: 40px 20px;
-    /* Centra el contenido horizontalmente y limita el ancho para mejor legibilidad
-       en pantallas grandes. */
-    max-width: 900px;
-    margin: 0 auto;
+    /* 🏗️ Regla Sticky Footer (La más importante aquí) */
+    flex-grow: 1;                      /* ¡Le dice a esta sección que ocupe TODO el espacio vertical sobrante, empujando el footer! */
+    
+    /* 🎨 Diseño */
+    background-color: var(--color-gris-claro); /* Fondo igual al del body. */
+    padding: var(--espaciado-xl) var(--espaciado-md); /* Relleno grande arriba/abajo, medio a los lados. */
+    max-width: var(--max-ancho-contenido); /* Limita el ancho para que el texto sea fácil de leer. */
+    margin: 0 auto;                    /* Centra la sección horizontalmente. */
+    width: 100%;                       /* Asegura que no se rompa el centrado. */
 }
 
-.titulo {
-    /* Define el tamaño de fuente grande para el encabezado. */
-    font-size: 48px;
-    /* Centra el texto del título. */
+/* --- Títulos Globales (H2, H3, etc.) --- */
+h2, h3, h4, h5 {
+    color: var(--color-texto-principal); /* Color de alto contraste. */
+    margin-bottom: var(--espaciado-md);  /* Espacio debajo del título. */
+    line-height: 1.2;                    /* Espaciado entre líneas para que el título no esté apretado. */
+}
+
+/* --- Sección Principal (Hero Section) --- */
+.hero-section {
+    display: flex;                     /* Permite colocar elementos en dos columnas. */
+    align-items: center;               /* Centra verticalmente el texto y la imagen. */
+    gap: var(--espaciado-xl);          /* Espacio entre la columna izquierda y la derecha. */
+    padding: var(--espaciado-xl) 0;    /* Relleno arriba y abajo. */
+    margin-bottom: var(--espaciado-xl);/* Espacio entre la sección Hero y el resto del contenido. */
+    border-bottom: 1px solid #E0E0E0;  /* Línea divisoria sutil para un toque profesional. */
+}
+
+/* Hero Columna Izquierda (Título) */
+.hero-left {
+    flex: 1;                           /* Ocupa 1 parte del espacio disponible. */
     text-align: center;
-    /* Color de texto negro muy oscuro para un alto contraste (AAA de accesibilidad). */
-    color: #1A1A1A; 
-    /* Espaciado alrededor del título. */
-    padding-bottom: 30px;
-    display: flex; /* Coloca la imagen y el texto en una misma línea */
-    gap: 15px;  
-
 }
 
+.hero-left h1 {
+    font-size: 4.375rem;               /* ¡Título muy grande y escalable (70px)! */
+    line-height: 1.1;                  /* Espaciado ajustado para el título. */
+    text-align: left;
+    color: var(--color-texto-principal);
+}
+
+/* Hero Columna Derecha (Imagen y Texto) */
+.hero-right {
+    flex: 2;                           /* Ocupa 2 partes del espacio disponible (más ancho que el título). */
+}
+
+.hero-right .foto {
+    width: 7.5rem;                     /* Tamaño de la imagen (120px) y escalable. */
+    height: 7.5rem;
+    object-fit: cover;                 /* Asegura que la imagen no se deforme al ajustarse. */
+    border-radius: 50%;                /* ¡Hace la imagen perfectamente redonda! */
+    border: 3px solid var(--color-cyan); /* Borde con el color de acento. */
+    float: left;                       /* Permite que el texto se envuelva alrededor de la imagen. */
+    margin-right: var(--espaciado-sm); 
+    margin-bottom: var(--espaciado-xs);
+}
+
+.hero-right p {
+    font-size: 1.125rem;               /* Tamaño de texto ligeramente más grande (18px) y escalable. */
+    line-height: 1.6;
+    color: var(--color-texto-secundario);
+    text-align: left; 
+    margin-bottom: var(--espaciado-md);
+}
+
+/* Párrafos de Contenido Global (Fuera de la sección Hero) */
 main p {
-    /* Estilo para los párrafos de texto */
-    font-size: 18px;
-    line-height: 1.6; /* Aumenta el espaciado entre líneas para mejor lectura */
-    color: #333333; /* Color gris oscuro para el cuerpo de texto */
-    margin-bottom: 20px;
-    text-align: justify; /* Justifica el texto para un look más formal */
+    font-size: 1.125rem; 
+    line-height: 1.6; 
+    color: var(--color-texto-secundario);
+    margin-bottom: var(--espaciado-md);
+    text-align: justify;               /* Justifica el texto para una apariencia más formal. */
 }
 
-/* =======================================================
-   ESTILOS DEL PIE DE PÁGINA (<footer> y .footer)
-   ======================================================= */
+/* -------------------------------------------------------
+   4. PIE DE PÁGINA (<footer>)
+   ------------------------------------------------------- */
 
 .footer {
-    /* Fondo Azul Navy Oscuro: Color de confianza y profesionalismo. */
-    background-color: #003366;
-    /* Color de texto blanco: Alto contraste con el fondo oscuro. */
-    color: white; 
-    /* Relleno interno para darle "aire" al contenido del footer. */
-    padding: 30px 20px;
-    /* Se adhiere al fondo gracias a flex-grow: 1 en <main>. */
-    margin-top: auto;
-    /* Asegura que el footer ocupe el 100% del ancho de la ventana. */
-    width: 100%;
-    height: auto;
-    /* Configuración de Flexbox para organizar el contenido interno */
-    display: flex; 
-    flex-direction: column; /* Apila el texto y los botones verticalmente. */
-    align-items: center; /* Centra todo el contenido (texto y botones) horizontalmente. */
-    margin: 0 auto;
-    flex-grow: 1;
-}
-.menu a {
-    color:black; /* Color de acento Cian */
-    text-decoration: none;
-    font-weight: bold;
-}
-.navegacion {
-    /* Fondo Azul Navy Oscuro: Color de confianza y profesionalismo. */
-    background-color: #003366;
-    /* Color de texto blanco: Alto contraste con el fondo oscuro. */
-    color: white; 
-    /* Relleno interno para darle "aire" al contenido del footer. */
-    padding: 30px 20px;
-    /* Se adhiere al fondo gracias a flex-grow: 1 en <main>. */
-    margin-top: auto;
-    /* Asegura que el footer ocupe el 100% del ancho de la ventana. */
-    width: 100%;
+    background-color: var(--color-navy); /* Fondo Azul Oscuro, tomado de las variables. */
+    color: white;                      /* Texto blanco. */
+    padding: var(--espaciado-lg) var(--espaciado-md); /* Relleno grande para que tenga "aire". */
+    width: 100%;                       /* Ocupa todo el ancho. */
     
-    /* Configuración de Flexbox para organizar el contenido interno */
     display: flex; 
-    flex-direction: column; /* Apila el texto y los botones verticalmente. */
-    align-items: center; /* Centra todo el contenido (texto y botones) horizontalmente. */
-
+    flex-direction: column;            /* Apila los elementos (texto, contacto) verticalmente. */
+    align-items: center;               /* Centra el contenido del footer. */
 }
+
 .footer p {
-    /* Estilo del texto dentro del footer (Copyright y Contactame). */
-    margin: 5px 0; /* Poco espacio entre las líneas de texto. */
-    font-size: 16px;
+    margin: var(--espaciado-xs) 0;     /* Espacio mínimo entre las líneas del pie de página. */
+    font-size: 1rem;                   /* Tamaño de letra estándar (16px). */
     text-align: center;
-    
+    opacity: 0.9;                      /* Hace el texto un poco transparente para que no sea tan dominante. */
 }
 
-/* =======================================================
-ESTILOS DEL ÁREA DE CONTACTO (Botones de Llamada a la Acción)
-   ======================================================= */
+/* -------------------------------------------------------
+   5. ÁREA DE CONTACTO (Botones de Llamada a la Acción)
+   ------------------------------------------------------- */
 
 .contacto {
-    /* Habilita Flexbox: Convierte este div en un contenedor flexible. */
-    display: flex;
-    /* Define el espacio entre los botones. */
-    gap: 20px;
-    /* Centra los botones dentro del div .contacto. */
-    justify-content: center;
-    /* Espacio superior para separarlos del texto "Contactame a traves de:". */
-    
+    display: flex;                     /* Coloca los botones en línea. */
+    gap: var(--espaciado-md);          /* Espacio entre los botones. */
+    justify-content: center;           /* Centra los botones dentro de su contenedor. */
+    margin-top: var(--espaciado-md);
+    margin-bottom: var(--espaciado-md);
+    flex-wrap: wrap;                   /* Permite que los botones salten a la línea de abajo en móviles. */
 }
 
 .contacto a {
-    /* Fondo Azul Cían Brillante: Llamativo, moderno y contrasta bien con el Navy. */
-    background-color: #00BCD4; 
-    /* Color de texto del botón. */
-    color: #1A1A1A; /* Texto oscuro sobre el botón brillante para alto contraste. */
-    /* Espacio interno para que los botones se vean grandes y fáciles de clickear. */
-    padding: 12px 25px;
-    /* Remueve el subrayado por defecto de los enlaces. */
+    background-color: var(--color-cyan); /* Fondo del botón, color brillante. */
+    color: var(--color-texto-principal); /* Texto oscuro para alto contraste. */
+    padding: 0.75rem 1.5625rem;         /* Tamaño grande, fácil de tocar con el dedo. */
     text-decoration: none;
-    /* Bordes redondeados para un toque moderno. */
-    border-radius: 8px;
-    /* Añade una sombra sutil para darle profundidad y que el botón resalte. */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
-    /* Transición suave para los efectos hover. */
-    transition: background-color 0.3s, transform 0.1s;
-    font-weight: bold;
+    border-radius: 0.5rem;             /* Bordes redondeados. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para darle efecto 3D. */
+    transition: background-color 0.3s ease-in-out, transform 0.1s; /* Transición suave de efectos. */
+    font-weight: 700;                  /* Texto bien grueso. */
+    letter-spacing: 0.5px;             /* Un poco de espacio entre letras (toque moderno). */
+    outline: none;                     /* Quita el borde de foco feo por defecto. */
 }
 
 .contacto a:hover {
-    /* Efecto al pasar el ratón: Oscurece el botón ligeramente para dar feedback. */
-    background-color: #0097A7; 
-    /* Pequeña elevación al hacer hover. */
-    transform: translateY(-2px);
-}
-.titulo img{
-  width: 100px;               /* Tamaño de la imagen */
-  height: 100px;              /* La hace cuadrada */
-  object-fit: cover;          /* Asegura que no se deforme */
-  border: 3px solid #333;     /* Marco (puedes cambiar el color) */
-  border-radius: 10px;        /* Bordes ligeramente redondeados */
-}
-/* =======================================================
-   ESTILOS DE CONTENIDO PRINCIPAL (<main>)
-   ======================================================= */
-
-.main {
-    /* ... (Reglas de main se mantienen) ... */
-    flex-grow: 1;
-    background-color: #F8F8F8;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
+    background-color: var(--color-cian-hover); /* Cambia al tono oscuro al pasar el ratón. */
+    transform: translateY(-2px);       /* Mueve el botón ligeramente hacia arriba (efecto de "click"). */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al hacer hover. */
 }
 
-/* 1. CLASE DESUSADA: ELIMINA LAS REGLAS FLEXBOX DE .titulo */
-/* Usamos h1 directamente en hero-left y lo hacemos más grande para el efecto */
-.hero-left h1 {
-    font-size: 70px; /* Tamaño grande para el efecto visual que buscas */
-    line-height: 1.1;
-    text-align: left; /* Alineación izquierda en esta columna */
-    color: #1A1A1A;
+.contacto a:focus { /* CLAVE: Estilo para navegación con teclado (Accesibilidad) */
+    background-color: var(--color-cian-hover); 
+    outline: 3px solid white;          /* Anillo de foco blanco y visible. */
+    outline-offset: 2px;
 }
 
 
-/* 2. NUEVA SECCIÓN HERO: CONTENEDOR DE DOS COLUMNAS */
-.hero-section {
-    display: flex; /* Habilita Flexbox */
-    align-items: center; /* Alinea verticalmente los ítems al centro */
-    gap: 40px; /* Espacio entre las dos columnas */
-    padding: 50px 0;
-}
+/* -------------------------------------------------------
+   6. ADAPTACIÓN A MÓVILES (Media Queries)
+   ------------------------------------------------------- */
 
-/* 3. COLUMNAS: DISTRIBUCIÓN DE ANCHO */
-.hero-left {
-    /* La columna del título ocupa una parte del espacio */
-    flex: 1; 
-    text-align: center;
-}
-.hero-right {
-    /* La columna de la descripción ocupa el espacio restante */
-    flex: 2; 
-}
+@media (max-width: 768px) { /* Estas reglas se aplican si la pantalla es de 768px o menos (móviles) */
+    /* Reducimos el tamaño de fuente base, haciendo todos los 'rem' más pequeños. */
+    :root {
+        font-size: 15px; 
+    }
 
-/* 4. ESTILO DE IMAGEN: CENTRADA Y REDONDEADA */
-.hero-right .foto {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 100%; /* ¡La hace redonda! */
-    float: left; /* Hace que la imagen flote a la izquierda del texto */
-    margin-right: 15px; /* Espacio entre la imagen y el texto */
-    margin-bottom: 10px;
-}
-
-/* 5. ESTILOS DE PÁRRAFO: SE MANTIENEN PERO SIN JUSTIFICAR */
-.hero-right p {
-    font-size: 16px; 
-    line-height: 1.6;
-    color: #333333;
-    /* Quitamos el justify para que el texto fluya mejor alrededor de la imagen */
-    text-align: left; 
-}
-
-/* (Opcional) Media Query para Móviles: Las columnas se apilan */
-@media (max-width: 768px) {
     .hero-section {
-        flex-direction: column; /* Apila las columnas */
+        flex-direction: column;        /* Cambia las columnas para que se apilen verticalmente. */
         text-align: center;
+        gap: var(--espaciado-lg);
+        padding: var(--espaciado-lg) 0;
     }
+    
     .hero-left h1 {
-        font-size: 40px; /* Reduce el título */
+        font-size: 2.667rem;           /* Hace el título más pequeño para que quepa bien en el móvil. */
         text-align: center;
     }
+    
     .hero-right .foto {
-        float: none; /* Desactiva el float en móviles */
-        display: block;
-        margin: 0 auto 15px; /* Centra la imagen */
+        float: none;                   /* Desactiva el envoltorio de texto. */
+        display: block;                /* Permite centrar la imagen. */
+        margin: 0 auto var(--espaciado-sm); /* Centra la imagen horizontalmente. */
+    }
+
+    .hero-right p {
+        text-align: center;            /* Centra el texto en el móvil. */
     }
 }
