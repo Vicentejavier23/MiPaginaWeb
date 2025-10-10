@@ -178,9 +178,9 @@ main > div:not(:first-child) p {
 /* Nuevo selector para estilos específicos de esa imagen */
 .foto1 {
     /* Agregue aquí los estilos que desea, por ejemplo: */
-    width: 250px;
+    width: 100px;
     align-items: center;
-    height: 250px;
+    height: 100px;
     border-radius: 20px;
     object-fit: cover;
 }
