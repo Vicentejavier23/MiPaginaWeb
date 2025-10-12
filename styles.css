@@ -75,7 +75,7 @@ header {
     margin: 0 auto;
     padding: 0 var(--padding-md);
     display: flex; /* Asegura el layout flexible del menú */
-    justify-content: flex-end;
+    justify-content:space-around ; /* Alinea el menú a la derecha */
 }
 
 .menu {
@@ -83,6 +83,7 @@ header {
     list-style: none;
     display: flex;
     gap: 2rem; 
+    
 }
 
 .menu li a {
@@ -183,16 +184,17 @@ main > div:not(:first-child) p {
     height: 100px;
     border-radius: 20px;
     object-fit: cover;
+    
 }
 
 /* Imagen del proyecto */
+
 .foto {
     /* [FUNCIONALIDAD]: Estilos para imágenes de proyectos (Portafolio) y Hero (Index). */
-    max-width: 100%;    
+    max-width: 100%;
     height: auto;
     border-radius: 4px;
     margin: 1.5rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 /* Botón de visita de proyecto */
@@ -215,9 +217,22 @@ a[hrfe]:hover {
 }
 
 /* --- 4.2. ESPECÍFICO: LISTA DE SERVICIOS (Servicio.html) --- */
+.descripcion1 p {
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--accent-color); /* Borde de acento */
+    border-right: 4px solid var(--accent-color); /* Borde de acento */
+    padding: var(--padding-sm); /* Espaciado interno */
+
+
+
+}
+
+
+
 .main ul {
     list-style: none;
-    padding-left: 0;
+    padding-left: 0; /* Elimina el padding por defecto de la lista */
 }
 
 .main ul li {
@@ -228,6 +243,7 @@ a[hrfe]:hover {
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border-left: 4px solid var(--accent-color); /* Borde de acento */
+    border-right: 4px solid var(--accent-color); /* Borde de acento */
     font-size: 1.1rem;
 }
 
@@ -239,6 +255,7 @@ a[hrfe]:hover {
     justify-content: center;
     margin-top: var(--padding-md);
     flex-wrap: wrap;
+    border: #2c3e50;
 }
 
 .contacto a {
