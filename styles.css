@@ -497,7 +497,7 @@ footer a:hover, .footer a:hover {
    7. MEDIA QUERIES (RESPONSIVE DESIGN)
    ------------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 430px) {
     /* [FUNCIONALIDAD]: Reglas aplicadas a dispositivos con ancho máximo de 768px (móviles/tablets). */
     
     /* AJUSTE: Body */
