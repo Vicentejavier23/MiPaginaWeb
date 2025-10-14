@@ -2,6 +2,7 @@
    | HOJA DE ESTILOS PROFESIONAL - BASE PORTAFOLIO |
    | Autor: Vicente Bueno |
    | Fecha: 2025 |
+   | Tema: Futurista Corporativo |
    ======================================================= */
 
 /* -------------------------------------------------------
@@ -11,21 +12,30 @@
 :root {
     /* [FUNCIONALIDAD]: Almacena constantes de diseño para facilitar la escalabilidad y el cambio de tema. */
     
-    /* PALETA DE COLORES */
-    --primary-color: #34495e; /* Azul Oscuro/Gris (HEADER, FOOTER, TÍTULOS PRINCIPALES) */
-    --secondary-color: #ecf0f1; /* Gris Claro (BACKGROUND GLOBAL) */
-    --accent-color: #3498db; /* Azul Brillante (LINKS, BOTONES, ACENTO VISUAL) */
-    --text-color: #2c3e50; /* Gris Oscuro (CUERPO DE TEXTO, ALTO CONTRASTE) */
+    /* PALETA DE COLORES - FUTURISTA */
+    --primary-color: #0a0e27;        /* Color base oscuro para header y footer */
+    --secondary-color: #1a1f3a;      /* Color para tarjetas y fondos secundarios */
+    --accent-color: #00d9ff;         /* Color principal de acentos (Cian fluorescente) */
+    --accent-secondary: #9d4edd;     /* Color secundario de acentos (Púrpura) */
+    --accent-tertiary: #ff006e;      /* Color terciario de acentos (Rosa magenta) */
+    --text-color: #ffffff;           /* Color de texto principal (Blanco) */
+    --text-secondary: #b0b8d4;       /* Color de texto secundario (Gris azulado) */
     
     /* TIPOGRAFÍA */
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Fuente principal */
+    --font-monospace: 'Courier New', monospace;                       /* Fuente monoespaciada */
     
     /* LAYOUT Y ESPACIADO */
-    --max-width: 1000px; /* Ancho máximo para centrar el contenido */
-    --padding-xs: 0.5rem; /* ~8px */
-    --padding-sm: 1rem; /* ~16px */
-    --padding-md: 1.5rem; /* ~24px */
-    --padding-lg: 2rem; /* ~32px */
+    --max-width: 1200px;             /* Ancho máximo del contenedor */
+    --padding-xs: 0.5rem;            /* ~8px - Espaciado muy pequeño */
+    --padding-sm: 1rem;              /* ~16px - Espaciado pequeño */
+    --padding-md: 1.5rem;            /* ~24px - Espaciado medio */
+    --padding-lg: 2rem;              /* ~32px - Espaciado grande */
+    --padding-xl: 3rem;              /* ~48px - Espaciado muy grande */
+    
+    /* TRANSICIONES */
+    --transition: all 0.3s ease;     /* Transición suave para todos los cambios (0.3 segundos) */
+    --transition-fast: all 0.15s ease; /* Transición rápida (0.15 segundos) */
 }
 
 /* -------------------------------------------------------
@@ -34,23 +44,23 @@
 
 * {
     /* [FUNCIONALIDAD]: Universal Reset. Define el modelo de caja y elimina márgenes/rellenos por defecto. */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* CLAVE: Mantiene el ancho total predecible (incluye border y padding) */
+    margin: 0;                    /* Elimina margen externo por defecto */
+    padding: 0;                   /* Elimina relleno interno por defecto */
+    box-sizing: border-box;       /* CLAVE: El ancho incluye border y padding (no suma extra) */
 }
 
-.body {
+body {
     /* [FUNCIONALIDAD]: Estilos base de la tipografía y configuración de "Sticky Footer". */
-    font-family: var(--font-family);
-    line-height: 1.6;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    padding-top: 60px; /* Offset para compensar la altura del header fijo */
+    font-family: var(--font-family);              /* Usa la fuente definida en :root */
+    line-height: 1.6;                            /* Altura de línea para mejor legibilidad (1.6x tamaño de fuente) */
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1a0f2e 100%);  /* Fondo con gradiente diagonal */
+    color: var(--text-color);                    /* Color de texto por defecto (blanco) */
+    padding-top: 80px;                           /* Espacio superior para que el contenido no quede bajo el header fijo */
     
     /* Configuración Flexbox para el "Sticky Footer" */
-    min-height: 100vh; /* Ocupa al menos el 100% de la altura del viewport */
-    display: flex;
-    flex-direction: column; /* Apila Header, Main, Footer verticalmente */
+    min-height: 100vh;                           /* Mínimo el 100% de la altura del viewport */
+    display: flex;                               /* Activa Flexbox en el body */
+    flex-direction: column;                      /* Apila Header, Main, Footer verticalmente */
 }
 
 /* -------------------------------------------------------
@@ -59,50 +69,97 @@
 
 header {
     /* [FUNCIONALIDAD]: Barra de navegación fija en la parte superior del viewport. */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.8rem 0;
-    position: fixed; 
-    width: 100%;
-    top: 0;
-    z-index: 1000; /* Asegura que el header esté sobre otros elementos */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(10, 14, 39, 0.95);         /* Fondo semitransparente (95% opaco) */
+    backdrop-filter: blur(10px);                /* Efecto de vidrio frosted (desenfoque trasero) */
+    color: white;                               /* Color de texto blanco */
+    position: fixed;                            /* Fijo en la pantalla, no se mueve con scroll */
+    width: 100%;                                /* Ocupa todo el ancho disponible */
+    top: 0;                                     /* Pegado en la parte superior */
+    z-index: 1000;                              /* Asegura que esté sobre otros elementos */
+    border-bottom: 1px solid rgba(0, 217, 255, 0.1);  /* Línea sutil de borde inferior */
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.05);   /* Sombra sutil con color cian */
 }
 
 .navegacion {
     /* [FUNCIONALIDAD]: Contenedor de ancho limitado para centrar el menú. */
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--padding-md);
-    display: flex; /* Asegura el layout flexible del menú */
-    justify-content:space-around ; /* Alinea el menú a la derecha */
+    max-width: var(--max-width);               /* Limita el ancho al máximo definido */
+    margin: 0 auto;                            /* Centra horizontalmente con márgenes automáticos */
+    padding: 0 var(--padding-md);              /* Espaciado interno lateral */
+    display: flex;                             /* Activa Flexbox */
+    justify-content: space-between;            /* Espacia los items: logo a la izquierda, menú a la derecha */
+    align-items: center;                       /* Centra verticamente todos los items */
+}
+
+.logo {
+    /* [FUNCIONALIDAD]: Logo del sitio. */
+    font-size: 1.5rem;                         /* Tamaño de fuente del logo */
+    font-weight: 700;                          /* Peso de fuente: Muy bold */
+    color: var(--accent-color);                /* Color cian fluorescente */
+    text-decoration: none;                     /* Elimina subrayado */
+    letter-spacing: 2px;                       /* Espacio entre letras */
+    transition: var(--transition);             /* Transición suave al pasar a otro estado */
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);  /* Sombra de texto con brillo cian */
+}
+
+.logo:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar el mouse sobre el logo. */
+    color: var(--accent-tertiary);             /* Cambia a color rosa magenta */
+    text-shadow: 0 0 20px var(--accent-color); /* Sombra más intensa y brillante */
 }
 
 .menu {
     /* [FUNCIONALIDAD]: Lista de enlaces de navegación. */
-    list-style: none;
-    display: flex;
-    gap: 2rem; 
-    
+    list-style: none;                          /* Elimina los puntos de la lista */
+    display: flex;                             /* Activa Flexbox */
+    gap: 2rem;                                 /* Espacio entre items (2rem = 32px) */
 }
 
 .menu li a {
-    /* [FUNCIONALIDAD]: Estilo de los enlaces. */
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 0.8rem;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 4px;
+    /* [FUNCIONALIDAD]: Estilo de los enlaces del menú. */
+    color: var(--text-secondary);              /* Color gris azulado */
+    text-decoration: none;                     /* Elimina subrayado */
+    font-weight: 500;                          /* Peso de fuente: Semi-bold */
+    padding: 0.5rem 0.8rem;                    /* Relleno interno: vertical y horizontal */
+    transition: var(--transition);             /* Transición suave */
+    border-radius: 4px;                        /* Esquinas ligeramente redondeadas */
+    position: relative;                        /* Necesario para el pseudo-elemento ::after */
+}
+
+.menu li a::after {
+    /* [FUNCIONALIDAD]: Línea de subrayado animada (efecto underline en hover). */
+    content: '';                               /* Pseudo-elemento vacío (solo para decoración) */
+    position: absolute;                        /* Posicionado absolutamente dentro del link */
+    bottom: -5px;                              /* 5px por debajo del link */
+    left: 0;                                   /* Alineado a la izquierda */
+    width: 0;                                  /* Ancho inicial: 0 (invisible) */
+    height: 2px;                               /* Altura de la línea */
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-tertiary));  /* Gradiente de colores */
+    transition: width 0.3s ease;               /* Animación de ancho */
 }
 
 .menu li a:hover,
-.menu li a:focus {
-    /* [FUNCIONALIDAD]: Interacción de usuario (hover/focus). CLAVE para accesibilidad. */
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    outline: 2px solid var(--accent-color); /* Indicador de foco */
-    outline-offset: 2px;
+.menu li a:focus,
+.menu li a.active {
+    /* [FUNCIONALIDAD]: Interacción de usuario (hover/focus/activo). */
+    color: var(--accent-color);                /* Cambia color a cian */
+    outline: 2px solid var(--accent-color);    /* Borde de foco para accesibilidad */
+    outline-offset: 2px;                       /* Espacio entre elemento y borde de foco */
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+    /* [FUNCIONALIDAD]: Anima la línea de subrayado al 100% de ancho. */
+    width: 100%;                               /* Expande la línea al ancho completo */
+}
+
+.menu-toggle {
+    /* [FUNCIONALIDAD]: Botón hamburguesa para menú móvil. */
+    display: none;                             /* Oculto por defecto (se muestra en móvil) */
+    background: none;                          /* Sin fondo */
+    border: none;                              /* Sin borde */
+    color: var(--accent-color);                /* Color cian */
+    font-size: 1.5rem;                         /* Tamaño del icono */
+    cursor: pointer;                           /* Cambia cursor a mano */
 }
 
 /* -------------------------------------------------------
@@ -111,253 +168,634 @@ header {
 
 .main, main {
     /* [FUNCIONALIDAD]: Contenedor principal de contenido. CLAVE para el "Sticky Footer". */
-    flex-grow: 1; /* Ocupa el espacio vertical restante, empujando el footer */
-    max-width: var(--max-width);
-    margin: var(--padding-lg) auto; /* 2rem de margen superior/inferior */
-    padding: 0 var(--padding-md);
+    flex-grow: 1;                              /* Ocupa el espacio vertical restante (empuja footer al final) */
+    max-width: var(--max-width);               /* Limita el ancho */
+    margin: var(--padding-xl) auto;            /* 3rem de margen: arriba, abajo, centrado */
+    padding: 0 var(--padding-md);              /* Espaciado lateral */
 }
 
 /* Estilo de la cabecera/hero dentro del main */
 main > div:first-child, .titulo { 
     /* [FUNCIONALIDAD]: Contenedor del título principal y subtítulo de cada página. */
-    text-align: center;
-    padding: 3rem 0;
-    margin-bottom: 2rem;
-    border-bottom: 3px solid var(--accent-color);
+    text-align: center;                        /* Centra el texto */
+    padding: 3rem 0;                           /* Relleno: 3rem arriba y abajo */
+    margin-bottom: 2rem;                       /* Margen inferior */
+    border-bottom: 3px solid var(--accent-color);  /* Línea inferior de color cian */
+    position: relative;                        /* Necesario para el pseudo-elemento ::after */
+}
+
+main > div:first-child::after {
+    /* [FUNCIONALIDAD]: Efecto de brillo sutil bajo el título. */
+    content: '';                               /* Pseudo-elemento vacío */
+    position: absolute;                        /* Posicionado absolutamente */
+    bottom: -10px;                             /* 10px por debajo del elemento */
+    left: 50%;                                 /* Centrado horizontalmente */
+    transform: translateX(-50%);               /* Ajusta para que esté perfectamente centrado */
+    width: 100px;                              /* Ancho del efecto */
+    height: 30px;                              /* Alto del efecto */
+    background: radial-gradient(ellipse, rgba(0, 217, 255, 0.3), transparent);  /* Gradiente radial */
+    filter: blur(20px);                        /* Desenfoque para efecto suave */
 }
 
 h1, .titulo {
     /* [FUNCIONALIDAD]: Título principal de la página. */
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;                         /* Tamaño grande */
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-tertiary));  /* Gradiente diagonal */
+    -webkit-background-clip: text;             /* Aplica fondo al texto (Safari) */
+    -webkit-text-fill-color: transparent;      /* Hace el texto transparente para mostrar gradiente (Safari) */
+    background-clip: text;                     /* Aplica fondo al texto (Estándar) */
+    margin-bottom: 0.5rem;                     /* Margen inferior pequeño */
 }
 
 h2 {
     /* [FUNCIONALIDAD]: Título secundario de sección o proyecto. */
-    font-size: 1.8rem;
-    color: var(--accent-color);
-    margin-bottom: var(--padding-sm);
-    border-left: 5px solid var(--primary-color);
-    padding-left: 10px;
+    font-size: 1.8rem;                         /* Tamaño mediano-grande */
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));  /* Gradiente */
+    -webkit-background-clip: text;             /* Aplica gradiente al texto */
+    -webkit-text-fill-color: transparent;      /* Hace el texto transparente */
+    background-clip: text;                     /* Estándar para gradiente en texto */
+    margin-bottom: var(--padding-md);          /* Margen inferior */
+    border-left: 5px solid var(--accent-color);  /* Borde izquierdo llamativo */
+    padding-left: 15px;                        /* Espaciado entre borde y texto */
+}
+
+h3 {
+    /* [FUNCIONALIDAD]: Título terciario. */
+    font-size: 1.3rem;                         /* Tamaño mediano */
+    color: var(--accent-color);                /* Color cian */
+    margin-bottom: var(--padding-sm);          /* Margen inferior */
 }
 
 /* Párrafos Generales */
 p {
     /* [FUNCIONALIDAD]: Estilo base del cuerpo de texto para legibilidad. */
-    font-size: 1.05rem; 
-    line-height: 1.6;
-    margin-bottom: var(--padding-md);
-    color: var(--text-color);
+    font-size: 1.05rem;                        /* Tamaño ligeramente más grande que el defecto */
+    line-height: 1.8;                          /* Altura de línea generosa para lectura */
+    margin-bottom: var(--padding-md);          /* Margen inferior para separación */
+    color: var(--text-secondary);              /* Color gris azulado */
 }
 
 /* --- 4.1. ESPECÍFICO: TARJETAS DE PROYECTO (Portafolio.html) --- */
 
 main > div:not(:first-child) {
     /* [FUNCIONALIDAD]: Estilos de la tarjeta de proyecto. Optimizado para ser más COMPACTO. */
-    background-color: white;
+    background: var(--secondary-color);        /* Fondo de color secundario */
+    border: 1px solid rgba(0, 217, 255, 0.2);  /* Borde sutil de cian */
+    backdrop-filter: blur(10px);               /* Efecto vidrio frosted */
     
     /* AJUSTE PARA COMPACTACIÓN: Menos padding y margen */
-    padding: var(--padding-md); /* Reducido a 1.5rem (24px) */
-    margin-bottom: var(--padding-lg); /* Reducido a 2rem (32px) */
+    padding: var(--padding-lg);                /* 2rem de relleno interno */
+    margin-bottom: var(--padding-xl);          /* 3rem de margen inferior */
     
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 12px;                       /* Esquinas muy redondeadas */
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1);  /* Sombra con brillo cian */
+    transition: var(--transition);             /* Transición suave para todos los cambios */
 
     /* Regla para centrar y limitar el ancho percibido de la tarjeta */
-    max-width: 800px; 
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 800px;                          /* Ancho máximo */
+    margin-left: auto;                         /* Centra a la izquierda */
+    margin-right: auto;                        /* Centra a la derecha */
+}
+
+main > div:not(:first-child):hover {
+    /* [FUNCIONALIDAD]: Efecto hover en tarjetas - se anima. */
+    border-color: var(--accent-color);         /* Borde se vuelve más brillante */
+    box-shadow: 0 12px 40px rgba(0, 217, 255, 0.2);  /* Sombra más intensa */
+    transform: translateY(-5px);               /* Sube 5px (efecto de elevación) */
 }
 
 main > div:not(:first-child) p {
     /* [FUNCIONALIDAD]: Párrafos más concisos dentro de la tarjeta. */
-    font-size: 1rem; /* Ligeramente más pequeño para densidad de lectura */
-    line-height: 1.5;
-    text-align: justify;
+    font-size: 1rem;                           /* Tamaño normal */
+    line-height: 1.6;                          /* Altura de línea más compacta */
+    text-align: justify;                       /* Justifica el texto */
+    color: var(--text-secondary);              /* Color gris azulado */
 }
+
 /* Nuevo selector para estilos específicos de esa imagen */
 .foto1 {
-    /* Agregue aquí los estilos que desea, por ejemplo: */
-    width: 100px;
-    align-items: center;
-    height: 100px;
-    border-radius: 20px;
-    object-fit: cover;
-    
+    /* [FUNCIONALIDAD]: Foto de perfil o avatar. */
+    width: 120px;                              /* Ancho de 120px */
+    height: 120px;                             /* Alto de 120px (cuadrado) */
+    border-radius: 50%;                        /* 50% = Círculo perfecto */
+    object-fit: cover;                         /* Recorta la imagen para llenar el espacio */
+    border: 3px solid var(--accent-color);     /* Borde de color cian */
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);   /* Sombra con brillo */
+    transition: var(--transition);             /* Transición suave */
+}
+
+.foto1:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse sobre la foto. */
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);   /* Sombra más intensa */
+    transform: scale(1.05);                    /* Amplía la imagen 5% */
 }
 
 /* Imagen del proyecto */
 
 .foto {
     /* [FUNCIONALIDAD]: Estilos para imágenes de proyectos (Portafolio) y Hero (Index). */
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 1.5rem 0;
+    max-width: 100%;                           /* Ancho máximo: 100% del contenedor */
+    height: auto;                              /* Alto automático (mantiene proporción) */
+    border-radius: 8px;                        /* Esquinas redondeadas */
+    margin: 1.5rem 0;                          /* Margen: 1.5rem arriba y abajo */
+    border: 1px solid rgba(0, 217, 255, 0.2);  /* Borde sutil */
+    transition: var(--transition);             /* Transición suave */
+}
+
+.foto:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse sobre imagen. */
+    border-color: var(--accent-color);         /* Borde se vuelve visible */
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.2);  /* Sombra aparece */
+    transform: scale(1.02);                    /* Amplía 2% */
 }
 
 /* Botón de visita de proyecto */
-a[hrfe] {
+a[href] {
     /* [FUNCIONALIDAD]: Estilo de botón para enlaces externos (Portafolio). */
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: white;
-    text-decoration: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-weight: bold;
-    margin-top: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;                     /* Permite aplicar width, height, padding */
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));  /* Gradiente */
+    color: var(--primary-color);               /* Texto oscuro para contraste */
+    text-decoration: none;                     /* Sin subrayado */
+    padding: 0.8rem 1.8rem;                    /* Relleno: vertical y horizontal */
+    border-radius: 50px;                       /* Muy redondeado (píldora) */
+    font-weight: 600;                          /* Semi-bold */
+    margin-top: 1rem;                          /* Margen superior */
+    transition: var(--transition);             /* Transición suave */
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra inicial */
 }
 
-a[hrfe]:hover {
-    background-color: #2980b9; /* Tono más oscuro de accent-color */
-    transform: translateY(-2px);
+a[href]:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse sobre botón. */
+    box-shadow: 0 6px 25px rgba(0, 217, 255, 0.5);  /* Sombra más intensa */
+    transform: translateY(-2px);               /* Sube 2px */
 }
 
 /* --- 4.2. ESPECÍFICO: LISTA DE SERVICIOS (Servicio.html) --- */
+
 .descripcion1 p {
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid var(--accent-color); /* Borde de acento */
-    border-right: 4px solid var(--accent-color); /* Borde de acento */
-    padding: var(--padding-sm); /* Espaciado interno */
-
-
-
+    /* [FUNCIONALIDAD]: Párrafos dentro de descripción de servicios. */
+    border-radius: 8px;                        /* Esquinas redondeadas */
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.1);  /* Sombra sutil */
+    border-left: 4px solid var(--accent-color);    /* Borde izquierdo de acento */
+    border-right: 4px solid var(--accent-secondary);  /* Borde derecho de acento secundario */
+    padding: var(--padding-md);                /* Espaciado interno */
+    background: rgba(0, 217, 255, 0.05);       /* Fondo semitransparente */
+    transition: var(--transition);             /* Transición suave */
 }
 
-
+.descripcion1 p:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse. */
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.15);  /* Sombra más intensa */
+    transform: translateX(5px);                /* Se desplaza 5px a la derecha */
+}
 
 .main ul {
-    list-style: none;
-    padding-left: 0; /* Elimina el padding por defecto de la lista */
+    /* [FUNCIONALIDAD]: Lista sin estilos. */
+    list-style: none;                          /* Elimina puntos */
+    padding-left: 0;                           /* Elimina padding por defecto */
 }
 
 .main ul li {
     /* [FUNCIONALIDAD]: Tarjeta de cada servicio. */
-    background-color: white;
-    padding: var(--padding-sm);
-    border-radius: 6px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid var(--accent-color); /* Borde de acento */
-    border-right: 4px solid var(--accent-color); /* Borde de acento */
-    font-size: 1.1rem;
+    background: var(--secondary-color);        /* Fondo oscuro */
+    padding: var(--padding-md);                /* Relleno interno */
+    border-radius: 8px;                        /* Esquinas redondeadas */
+    margin-bottom: 1.5rem;                     /* Margen inferior */
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.1);  /* Sombra sutil */
+    border-left: 4px solid var(--accent-color);    /* Borde izquierdo */
+    border-right: 4px solid var(--accent-secondary);  /* Borde derecho */
+    font-size: 1.1rem;                         /* Tamaño ligeramente grande */
+    transition: var(--transition);             /* Transición suave */
+    color: var(--text-secondary);              /* Color gris azulado */
+}
+
+.main ul li:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse sobre servicio. */
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.15);  /* Sombra más intensa */
+    transform: translateY(-3px);               /* Sube 3px */
+    border-color: var(--accent-tertiary);      /* Borde cambia a rosa */
 }
 
 /* --- 4.3. ESPECÍFICO: BOTONES DE CONTACTO (Contacto.html) --- */
+
 .contacto {
     /* [FUNCIONALIDAD]: Contenedor Flexbox para centrar y organizar botones de contacto. */
-    display: flex;
-    gap: var(--padding-sm);
-    justify-content: center;
-    margin-top: var(--padding-md);
-    flex-wrap: wrap;
-    border: #2c3e50;
+    display: flex;                             /* Activa Flexbox */
+    gap: var(--padding-md);                    /* Espacio entre botones */
+    justify-content: center;                   /* Centra horizontalmente */
+    margin-top: var(--padding-xl);             /* Margen superior grande */
+    flex-wrap: wrap;                           /* Permite saltos de línea en móvil */
 }
 
 .contacto a {
     /* [FUNCIONALIDAD]: Estilo de los botones de contacto (WhatsApp, etc.). */
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;                     /* Permite ancho/alto */
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));  /* Gradiente */
+    color: var(--primary-color);               /* Texto oscuro */
+    text-decoration: none;                     /* Sin subrayado */
+    padding: 0.8rem 1.8rem;                    /* Relleno */
+    border-radius: 50px;                       /* Píldora */
+    font-weight: 600;                          /* Semi-bold */
+    transition: var(--transition);             /* Transición suave */
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra */
+    border: 2px solid transparent;             /* Borde invisible por defecto */
 }
 
 .contacto a:hover {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    transform: translateY(-1px);
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse. */
+    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));  /* Gradiente diferente */
+    transform: translateY(-2px);               /* Sube 2px */
+    box-shadow: 0 8px 25px rgba(0, 217, 255, 0.4);  /* Sombra más intensa */
 }
 
 /* -------------------------------------------------------
    5. PIE DE PÁGINA (<footer>)
    ------------------------------------------------------- */
 
-.footer {
+footer, .footer {
     /* [FUNCIONALIDAD]: Pie de página. 'margin-top: auto' garantiza el "Sticky Footer". */
-    margin-top: auto; 
-    background-color: var(--primary-color);
-    color: white;
-    padding: var(--padding-md) 20px;
-    text-align: center;
-    width: 100%;
+    margin-top: auto;                          /* Fuerza el footer al final (Sticky Footer) */
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95), rgba(26, 15, 46, 0.95));  /* Gradiente */
+    border-top: 1px solid rgba(0, 217, 255, 0.1);  /* Línea superior sutil */
+    color: white;                              /* Texto blanco */
+    padding: var(--padding-xl) var(--padding-md);  /* Espaciado interno */
+    text-align: center;                        /* Centra el contenido */
+    width: 100%;                               /* Ocupa todo el ancho */
 }
 
-.footer p {
+footer p, .footer p {
     /* [FUNCIONALIDAD]: Texto del pie de página. */
-    margin: 5px 0;
-    font-size: 0.9rem;
-    color: white; /* Asegurar color blanco sobre fondo oscuro */
+    margin: 0.5rem 0;                          /* Margen pequeño entre párrafos */
+    font-size: 0.95rem;                        /* Tamaño ligeramente más pequeño */
+    color: var(--text-secondary);              /* Color gris azulado */
 }
-.button {
-    /* Base y Estructura */
-    display: inline-block; /* Permite ancho fijo y centrado, pero respeta el flujo de texto */
-    text-decoration: none; /* Elimina el subrayado si es un enlace (<a>) */
-    cursor: pointer; /* Indica que es un elemento interactivo */
-    
-    /* Diseño y Paleta de Colores */
-    background-color: var(--accent-color); /* Color de fondo: Azul Brillante */
-    color: white; /* Color de texto: Blanco (Alto Contraste) */
-    border: none; /* Elimina el borde por defecto */
-    border-radius: 6px; /* Bordes ligeramente redondeados */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    
-    /* Tipografía y Espaciado */
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem; /* Relleno: Vertical (arriba/abajo) y Horizontal (lados) */
-    
-    /* Transición (Efecto Suave al hacer Hover) */
-    transition: all 0.3s ease;
+
+footer a, .footer a {
+    /* [FUNCIONALIDAD]: Enlaces en el footer. */
+    color: var(--accent-color);                /* Color cian */
+    text-decoration: none;                     /* Sin subrayado */
+    transition: var(--transition);             /* Transición suave */
+}
+
+footer a:hover, .footer a:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse sobre links del footer. */
+    color: var(--accent-tertiary);             /* Color rosa */
+    text-decoration: underline;                /* Subrayado */
 }
 
 /* -------------------------------------------------------
-   6. MEDIA QUERIES (RESPONSIVE DESIGN)
+   6. BOTONES GENÉRICOS
+   ------------------------------------------------------- */
+
+.button {
+    /* Base y Estructura */
+    display: inline-block;                     /* Permite ancho, alto, padding */
+    text-decoration: none;                     /* Elimina subrayado si es enlace */
+    cursor: pointer;                           /* Cambia cursor a mano */
+    border: none;                              /* Sin borde */
+    
+    /* Diseño y Paleta de Colores */
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));  /* Gradiente diagonal */
+    color: var(--primary-color);               /* Texto oscuro para contraste */
+    border-radius: 50px;                       /* Píldora (muy redondeado) */
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra con brillo */
+    
+    /* Tipografía y Espaciado */
+    font-size: 1rem;                           /* Tamaño de fuente */
+    font-weight: 600;                          /* Semi-bold */
+    padding: 0.8rem 1.8rem;                    /* Relleno: vertical y horizontal */
+    
+    /* Transición (Efecto Suave al hacer Hover) */
+    transition: var(--transition);             /* Transición suave */
+}
+
+.button:hover, .button:focus {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse o focus. */
+    box-shadow: 0 6px 25px rgba(0, 217, 255, 0.5);  /* Sombra más intensa */
+    transform: translateY(-2px);               /* Sube 2px */
+    outline: 2px solid var(--accent-color);    /* Borde de foco */
+    outline-offset: 2px;                       /* Espacio entre elemento y borde */
+}
+
+/* Variante secundaria de botón */
+.button.secondary {
+    /* [FUNCIONALIDAD]: Botón alternativo con estilo diferente. */
+    background: transparent;                   /* Fondo transparente */
+    color: var(--accent-color);                /* Texto cian */
+    border: 2px solid var(--accent-color);     /* Borde cian */
+    box-shadow: none;                          /* Sin sombra */
+}
+
+.button.secondary:hover {
+    /* [FUNCIONALIDAD]: Efecto hover en botón secundario. */
+    background: var(--accent-color);           /* Rellena de cian */
+    color: var(--primary-color);               /* Texto oscuro */
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra aparece */
+}
+
+/* -------------------------------------------------------
+   7. MEDIA QUERIES (RESPONSIVE DESIGN)
    ------------------------------------------------------- */
 
 @media (max-width: 768px) {
     /* [FUNCIONALIDAD]: Reglas aplicadas a dispositivos con ancho máximo de 768px (móviles/tablets). */
     
-    /* Header */
-    .navegacion {
-        justify-content: center; 
-    }
-    .menu {
-        gap: var(--padding-sm);
-    }
-    .menu li a {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Títulos */
-    h1, .titulo {
-        font-size: 2rem;
-    }
-    h2 {
-        font-size: 1.5rem;
+    /* AJUSTE: Body */
+    body {
+        padding-top: 60px;                     /* Reduce espaciado superior */
     }
 
-    /* Tarjetas de Proyecto (Portafolio) y Contenido */
-    .main, main {
-        /* Ajuste de margen superior para móviles (más compacto) */
-        margin-top: var(--padding-lg);
-    }
-    main > div:not(:first-child) {
-        padding: var(--padding-sm); /* Reducción de padding en móvil */
+    /* AJUSTE: Header */
+    header {
+        padding: 0.8rem 0;                     /* Reduce espaciado */
     }
     
-    /* Contacto */
-    .contacto {
-        flex-direction: column;
-        align-items: center;
+    .navegacion {
+        justify-content: space-between;        /* Espaciado entre logo y menú */
     }
+
+    .logo {
+        font-size: 1.3rem;                     /* Logo más pequeño en móvil */
+    }
+
+    .menu-toggle {
+        display: block;                        /* Muestra el botón hamburguesa */
+    }
+
+    .menu {
+        /* [FUNCIONALIDAD]: Menú hamburguesa oculto por defecto en móvil. */
+        display: none;                         /* Oculto inicialmente */
+        position: absolute;                    /* Posición absoluta */
+        top: 60px;                             /* Debajo del header */
+        left: 0;                               /* Desde la izquierda */
+        right: 0;                              /* Hasta la derecha (100% ancho) */
+        flex-direction: column;                /* Apila items verticalmente */
+        background: rgba(10, 14, 39, 0.98);    /* Fondo oscuro semitransparente */
+        padding: var(--padding-lg);            /* Espaciado interno */
+        gap: var(--padding-md);                /* Espacio entre items */
+        border-bottom: 1px solid rgba(0, 217, 255, 0.1);  /* Línea separadora */
+    }
+
+    .menu.active {
+        /* [FUNCIONALIDAD]: Menú visible cuando tiene clase 'active'. */
+        display: flex;                         /* Se muestra con Flexbox */
+    }
+
+    .menu li a {
+        padding: var(--padding-md);            /* Más relleno en móvil */
+        border-left: 3px solid var(--accent-color);  /* Borde de acento */
+    }
+
+    .menu li a::after {
+        /* [FUNCIONALIDAD]: Desactiva la línea animada en móvil. */
+        display: none;                         /* No mostrar línea de subrayado */
+    }
+    
+    /* AJUSTE: Títulos */
+    h1, .titulo {
+        font-size: 2rem;                       /* Reduce tamaño en móvil */
+    }
+    h2 {
+        font-size: 1.4rem;                     /* Reduce tamaño en móvil */
+    }
+
+    h3 {
+        font-size: 1.1rem;                     /* Reduce tamaño en móvil */
+    }
+
+    /* AJUSTE: Contenido principal */
+    .main, main {
+        /* [FUNCIONALIDAD]: Ajusta espaciado para pantallas pequeñas. */
+        margin-top: var(--padding-lg);         /* Reduce margen superior */
+        padding: 0 var(--padding-sm);          /* Reduce padding lateral */
+    }
+
+    main > div:first-child, .titulo {
+        /* [FUNCIONALIDAD]: Ajusta el contenedor de título. */
+        padding: 2rem 0;                       /* Reduce espaciado vertical */
+        margin-bottom: 1.5rem;                 /* Reduce margen inferior */
+    }
+
+    main > div:not(:first-child) {
+        /* [FUNCIONALIDAD]: Reduce espaciado en tarjetas de proyecto. */
+        padding: var(--padding-md);            /* Padding más pequeño */
+        margin-bottom: var(--padding-lg);      /* Margen más pequeño */
+    }
+
+    .foto1 {
+        /* [FUNCIONALIDAD]: Foto más pequeña en móvil. */
+        width: 100px;                          /* Reduce ancho */
+        height: 100px;                         /* Reduce alto */
+    }
+    
+    /* AJUSTE: Contacto */
+    .contacto {
+        /* [FUNCIONALIDAD]: Contacto en columna en móvil. */
+        flex-direction: column;                /* Apila botones verticalmente */
+        align-items: center;                   /* Centra los botones */
+        gap: var(--padding-sm);                /* Reduce espacio entre botones */
+    }
+
+    .contacto a {
+        /* [FUNCIONALIDAD]: Botones a ancho completo en móvil. */
+        width: 100%;                           /* Ocupa 100% del ancho */
+        max-width: 300px;                      /* Pero máximo 300px */
+        text-align: center;                    /* Centra el texto */
+    }
+
+    /* AJUSTE: Párrafos */
+    p {
+        font-size: 1rem;                       /* Tamaño de fuente reduce en móvil */
+    }
+}
+
+@media (max-width: 768px) {
+    /* [FUNCIONALIDAD]: Reglas para dispositivos MUY pequeños (móviles antiguos). */
+    
+    /* AJUSTE: Títulos */
+    h1, .titulo {
+        font-size: 1.5rem;                     /* Más pequeño aún */
+    }
+
+    h2 {
+        font-size: 1.2rem;                     /* Reduce significativamente */
+    }
+
+    /* AJUSTE: Menú */
+    .menu li a {
+        padding: var(--padding-sm);            /* Reduce padding */
+        font-size: 0.9rem;                     /* Reduce tamaño de fuente */
+    }
+
+    /* AJUSTE: Contenido */
+    main > div:not(:first-child) {
+        /* [FUNCIONALIDAD]: Más compacto en pantallas muy pequeñas. */
+        padding: var(--padding-sm);            /* Padding mínimo */
+    }
+
+    /* AJUSTE: Botones */
+    .button, .contacto a {
+        /* [FUNCIONALIDAD]: Botones más compactos. */
+        padding: 0.7rem 1.4rem;                /* Reduce padding */
+        font-size: 0.95rem;                    /* Reduce fuente */
+    }
+
+    /* AJUSTE: Especiales */
+    .logo {
+        letter-spacing: 1px;                   /* Reduce espaciado de letras */
+    }
+
+    .menu {
+        gap: var(--padding-sm);                /* Reduce espacio en menú */
+    }
+    .menu-toggle {
+        display: block;              /* ← Aparece en móvil */
+        background: none;
+        border: none;
+        color: #00d9ff;              /* O el color que uses */
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+    
+    nav {
+        display: none;     /* ← Menú oculto por defecto */
+    }
+    
+    nav.active {
+        display: flex;     /* ← Menú visible cuando active */
+    }
+}
+
+/* -------------------------------------------------------
+   8. ANIMACIONES PERSONALIZADAS (BONUS)
+   ------------------------------------------------------- */
+
+@keyframes slideInUp {
+    /* [FUNCIONALIDAD]: Animación de entrada desde abajo hacia arriba. */
+    from {
+        opacity: 0;                            /* Comienza invisible */
+        transform: translateY(30px);           /* Comienza 30px más abajo */
+    }
+    to {
+        opacity: 1;                            /* Termina visible */
+        transform: translateY(0);              /* Termina en posición normal */
+    }
+}
+
+@keyframes fadeIn {
+    /* [FUNCIONALIDAD]: Animación de desvanecimiento (entrada suave). */
+    from {
+        opacity: 0;                            /* Comienza invisible */
+    }
+    to {
+        opacity: 1;                            /* Termina visible */
+    }
+}
+
+@keyframes pulse {
+    /* [FUNCIONALIDAD]: Animación de pulso (latido). */
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.7);  /* Sombra pequeña */
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(0, 217, 255, 0);  /* Sombra se expande y desvanece */
+    }
+}
+
+/* -------------------------------------------------------
+   9. UTILIDADES Y CLASES HELPER
+   ------------------------------------------------------- */
+
+/* Clase para ocultar elementos visuales pero mantenerlos para lectores de pantalla */
+.sr-only {
+    /* [FUNCIONALIDAD]: Screen Reader Only - Accesibilidad. */
+    position: absolute;                        /* Saca del flujo visual */
+    width: 1px;                                /* Ancho mínimo */
+    height: 1px;                               /* Alto mínimo */
+    padding: 0;                                /* Sin padding */
+    margin: -1px;                              /* Margen negativo para ocultar */
+    overflow: hidden;                          /* Oculta el desbordamiento */
+    clip: rect(0, 0, 0, 0);                    /* Recorta el contenido */
+    white-space: nowrap;                       /* Evita saltos de línea */
+    border-width: 0;                           /* Sin borde */
+}
+
+/* Clase para centrar contenido */
+.center {
+    /* [FUNCIONALIDAD]: Centra el contenido horizontalmente. */
+    text-align: center;                        /* Centra el texto */
+    margin: 0 auto;                            /* Centra con márgenes automáticos */
+}
+
+/* Clase para agregar espaciado */
+.mt-1 {
+    margin-top: var(--padding-xs);             /* Margen superior pequeño */
+}
+.mt-2 {
+    margin-top: var(--padding-sm);             /* Margen superior mediano */
+}
+.mt-3 {
+    margin-top: var(--padding-md);             /* Margen superior grande */
+}
+
+.mb-1 {
+    margin-bottom: var(--padding-xs);          /* Margen inferior pequeño */
+}
+.mb-2 {
+    margin-bottom: var(--padding-sm);          /* Margen inferior mediano */
+}
+.mb-3 {
+    margin-bottom: var(--padding-md);          /* Margen inferior grande */
+}
+
+/* -------------------------------------------------------
+   10. ESTADOS Y ACCESIBILIDAD
+   ------------------------------------------------------- */
+
+/* Estado deshabilitado */
+button:disabled,
+input:disabled,
+textarea:disabled {
+    /* [FUNCIONALIDAD]: Estilos para elementos deshabilitados. */
+    opacity: 0.5;                              /* Transparencia para indicar que está deshabilitado */
+    cursor: not-allowed;                       /* Cursor que dice "no permitido" */
+}
+
+/* Estado de enfoque para teclado */
+*:focus-visible {
+    /* [FUNCIONALIDAD]: Indicador de foco para navegación por teclado. */
+    outline: 2px solid var(--accent-color);   /* Línea de foco visible */
+    outline-offset: 2px;                       /* Espacio alrededor del elemento */
+}
+
+/* Selección de texto */
+::selection {
+    /* [FUNCIONALIDAD]: Estilos para texto seleccionado. */
+    background-color: var(--accent-color);    /* Fondo cian */
+    color: var(--primary-color);               /* Texto oscuro */
+}
+
+/* Barras de scroll (navegadores Webkit) */
+::-webkit-scrollbar {
+    /* [FUNCIONALIDAD]: Estilo de la barra de scroll. */
+    width: 10px;                               /* Ancho de la barra */
+}
+
+::-webkit-scrollbar-track {
+    /* [FUNCIONALIDAD]: Fondo de la barra de scroll. */
+    background: var(--secondary-color);        /* Color de fondo */
+}
+
+::-webkit-scrollbar-thumb {
+    /* [FUNCIONALIDAD]: Pulgar de la barra de scroll (la parte que se mueve). */
+    background: var(--accent-color);           /* Color cian */
+    border-radius: 5px;                        /* Esquinas redondeadas */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /* [FUNCIONALIDAD]: Efecto hover en el pulgar. */
+    background: var(--accent-secondary);       /* Color púrpura */
 }
