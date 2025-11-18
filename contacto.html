@@ -1,40 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
-    <meta name="description" content="¿Necesitas un sitio web? Contacta directamente a Vicente Bueno por WhatsApp o correo electrónico para obtener tu cotización personalizada de desarrollo web.">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto</title>
+  <meta name="description" content="¿Necesitas un sitio web? Contacta directamente a Vicente Bueno por WhatsApp o correo electrónico para obtener tu cotización personalizada de desarrollo web.">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="body">
-<header>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        ☰
-    </button>
+  <header>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
     <nav class="navegacion" id="menu">
-        <ul class="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="servicio.html">Servicios</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="portafolio.html">Portafolio</a></li>
-        </ul>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicio.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="portafolio.html">Portafolio</a></li>
+      </ul>
     </nav>
-</header>
-    <main class="main">
+  </header>
+
+  <main class="main">
     <h1 class="titulo">Contacto</h1>
     <p>¿Tienes un proyecto en mente o quieres una cotización para tu futuro sitio web?</p>
     <p>¡Estaré encantado de ayudarte! Puedes contactarme a través de los siguientes medios:</p>
+
+    <form id ="contactForm" class="Formulario" >
+      <label>Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre" required>
+
+      <label>Correo</label>
+      <input type="email" id="email" name="correo" placeholder="Tu Correo" required>
+
+      <label>Asunto</label>
+      <textarea class="Correo" name="asunto" placeholder="Escribe tu mensaje" required></textarea>
+
+      <button type="submit" class="btn-contacto btn-formulario">Enviar</button>
+
+      <p id="resultado"></p>
+    </form>
+    
     <div class="contacto">
-                <a href="https://wa.me/937450359?text=Hola!%20Estoy%20interesado%20en%20tus%20servicios%20web." target="_blank">Mi WhatsApp</a>
-                <a href="mailto:vicentejavierbueno17@gmail.com?subject=Consulta%20sobre%20tus%20servicios"  target="_blank">Mi Correo</a>
-            </div>
-    </main>
-    <footer>
-        <div class="footer" >
-        <p>2025 Vicente Bueno - Desarrollador Web Junior | freelancer  - Estudiante de Informatica</p>
-            </div>
-    </footer>
-    <script src="script.js"></script>
+      <h1>Otras formas de contactarme:</h1>
+      <a href="https://wa.me/937450359?text=Hola!%20Estoy%20interesado%20en%20tus%20servicios%20web." target="_blank" class="btn-contacto btn-WhatsApp">Mi WhatsApp</a>
+      <a href="mailto:vicentejavierbueno17@gmail.com?subject=Consulta%20sobre%20tus%20servicios" target="_blank" class="btn-contacto btn-email">Mi Correo</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <p>2025 Vicente Bueno - Desarrollador Web Junior | Freelancer - Estudiante de Informática</p>
+    </div>
+  </footer>
+  <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="UCdAMEt5-9OcUqXFAD1uv";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+  emailjs.init("-mPjb6Z4CY4mApFc-");
+</script>
+
+  <script src="script.js"></script>
 </body>
 </html>

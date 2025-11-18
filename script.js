@@ -1,5 +1,5 @@
 /* ============================================
-   MENÚ HAMBURGUESA - FUNCIONA EN MÓVIL
+MENÚ HAMBURGUESA - FUNCIONA EN MÓVIL
    ============================================ */
 
 // Seleccionar elementos
@@ -50,3 +50,23 @@ window.addEventListener('scroll', function() {
     menu.classList.remove('active');
     menuToggle.classList.remove('active');
 });
+
+// ============================================
+// FORMULARIO DE CONTACTO CON EMAILJS
+// ============================================
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const resultado = document.getElementById("resultado");
+    resultado.innerText = "Enviando Mensaje...";
+
+    try {
+        await emailjs.sendForm("service_s93h6yk", "template_av4tu99", this);
+        await emailjs.sendForm("service_s93h6yk", "template_vi5qpge", this);
+        resultado.innerText = "Mensaje Enviado Correctamente ✔️";
+        this.reset();
+    } catch (error) {
+        resultado.innerText = "Error al enviar ❌ " + error.text;
+    }
+});
+

@@ -51,9 +51,14 @@
 
 body {
     /* [FUNCIONALIDAD]: Estilos base de la tipografía y configuración de "Sticky Footer". */
+    
+    background-image: url('/imagenes/fotocomputacional.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: var(--font-family);              /* Usa la fuente definida en :root */
     line-height: 1.6;                            /* Altura de línea para mejor legibilidad (1.6x tamaño de fuente) */
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1a0f2e 100%);  /* Fondo con gradiente diagonal */
+    background: linear-gradient(135deg, #0d0d2b, #1a1a3b); /* Fondo con gradiente diagonal */
     color: var(--text-color);                    /* Color de texto por defecto (blanco) */
     padding-top: 80px;                           /* Espacio superior para que el contenido no quede bajo el header fijo */
     
@@ -88,23 +93,6 @@ header {
     display: flex;                             /* Activa Flexbox */
     justify-content: space-between;            /* Espacia los items: logo a la izquierda, menú a la derecha */
     align-items: center;                       /* Centra verticamente todos los items */
-}
-
-.logo {
-    /* [FUNCIONALIDAD]: Logo del sitio. */
-    font-size: 1.5rem;                         /* Tamaño de fuente del logo */
-    font-weight: 700;                          /* Peso de fuente: Muy bold */
-    color: var(--accent-color);                /* Color cian fluorescente */
-    text-decoration: none;                     /* Elimina subrayado */
-    letter-spacing: 2px;                       /* Espacio entre letras */
-    transition: var(--transition);             /* Transición suave al pasar a otro estado */
-    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);  /* Sombra de texto con brillo cian */
-}
-
-.logo:hover {
-    /* [FUNCIONALIDAD]: Efecto al pasar el mouse sobre el logo. */
-    color: var(--accent-tertiary);             /* Cambia a color rosa magenta */
-    text-shadow: 0 0 20px var(--accent-color); /* Sombra más intensa y brillante */
 }
 
 .menu {
@@ -375,6 +363,9 @@ a[href]:hover {
     transform: translateY(-3px);               /* Sube 3px */
     border-color: var(--accent-tertiary);      /* Borde cambia a rosa */
 }
+.main p {
+    text-align: center;
+}
 
 /* --- 4.3. ESPECÍFICO: BOTONES DE CONTACTO (Contacto.html) --- */
 
@@ -386,6 +377,7 @@ a[href]:hover {
     margin-top: var(--padding-xl);             /* Margen superior grande */
     flex-wrap: wrap;                           /* Permite saltos de línea en móvil */
 }
+
 
 .contacto a {
     /* [FUNCIONALIDAD]: Estilo de los botones de contacto (WhatsApp, etc.). */
@@ -400,6 +392,24 @@ a[href]:hover {
     box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra */
     border: 2px solid transparent;             /* Borde invisible por defecto */
 }
+.Formulario button {
+    display: inline-block;                     /* Permite ancho/alto */
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));  /* Gradiente */
+    color: var(--primary-color);               /* Texto oscuro */
+    text-decoration: none;                     /* Sin subrayado */
+    padding: 0.8rem 1.8rem;                    /* Relleno */
+    border-radius: 50px;                       /* Píldora */
+    font-weight: 600;                          /* Semi-bold */
+    transition: var(--transition);             /* Transición suave */
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra */
+    border: 2px solid transparent;             /* Borde invisible por defecto */
+}
+.Formulario button:hover {
+    /* [FUNCIONALIDAD]: Efecto al pasar mouse. */
+    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));  /* Gradiente diferente */
+    transform: translateY(-2px);               /* Sube 2px */
+    box-shadow: 0 8px 25px rgba(0, 217, 255, 0.4);  /* Sombra más intensa */
+}
 
 .contacto a:hover {
     /* [FUNCIONALIDAD]: Efecto al pasar mouse. */
@@ -407,6 +417,7 @@ a[href]:hover {
     transform: translateY(-2px);               /* Sube 2px */
     box-shadow: 0 8px 25px rgba(0, 217, 255, 0.4);  /* Sombra más intensa */
 }
+
 
 /* -------------------------------------------------------
    5. PIE DE PÁGINA (<footer>)
@@ -443,54 +454,39 @@ footer a:hover, .footer a:hover {
     text-decoration: underline;                /* Subrayado */
 }
 
-/* -------------------------------------------------------
-   6. BOTONES GENÉRICOS
-   ------------------------------------------------------- */
+.Formulario input{
+    width: 300px;
+    height: 40px;
 
-.button {
-    /* Base y Estructura */
-    display: inline-block;                     /* Permite ancho, alto, padding */
-    text-decoration: none;                     /* Elimina subrayado si es enlace */
-    cursor: pointer;                           /* Cambia cursor a mano */
-    border: none;                              /* Sin borde */
-    
-    /* Diseño y Paleta de Colores */
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));  /* Gradiente diagonal */
-    color: var(--primary-color);               /* Texto oscuro para contraste */
-    border-radius: 50px;                       /* Píldora (muy redondeado) */
-    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra con brillo */
-    
-    /* Tipografía y Espaciado */
-    font-size: 1rem;                           /* Tamaño de fuente */
-    font-weight: 600;                          /* Semi-bold */
-    padding: 0.8rem 1.8rem;                    /* Relleno: vertical y horizontal */
-    
-    /* Transición (Efecto Suave al hacer Hover) */
-    transition: var(--transition);             /* Transición suave */
 }
 
-.button:hover, .button:focus {
-    /* [FUNCIONALIDAD]: Efecto al pasar mouse o focus. */
-    box-shadow: 0 6px 25px rgba(0, 217, 255, 0.5);  /* Sombra más intensa */
-    transform: translateY(-2px);               /* Sube 2px */
-    outline: 2px solid var(--accent-color);    /* Borde de foco */
-    outline-offset: 2px;                       /* Espacio entre elemento y borde */
+.Formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    
 }
 
-/* Variante secundaria de botón */
-.button.secondary {
-    /* [FUNCIONALIDAD]: Botón alternativo con estilo diferente. */
-    background: transparent;                   /* Fondo transparente */
-    color: var(--accent-color);                /* Texto cian */
-    border: 2px solid var(--accent-color);     /* Borde cian */
-    box-shadow: none;                          /* Sin sombra */
+.Formulario input,
+.Formulario textarea {
+    width: 300px;
+    max-width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(0,217,255,0.2);
+    background: var(--secondary-color);
+    color: var(--text-color);
+    transition: var(--transition);
 }
 
-.button.secondary:hover {
-    /* [FUNCIONALIDAD]: Efecto hover en botón secundario. */
-    background: var(--accent-color);           /* Rellena de cian */
-    color: var(--primary-color);               /* Texto oscuro */
-    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);  /* Sombra aparece */
+.Formulario textarea {
+    min-height: 150px;
+    max-height: 300px;
+    resize: vertical;
 }
 
 /* -------------------------------------------------------
@@ -498,174 +494,162 @@ footer a:hover, .footer a:hover {
    ------------------------------------------------------- */
 
 @media (max-width: 768px) {
-    /* [FUNCIONALIDAD]: Reglas aplicadas a dispositivos con ancho máximo de 768px (móviles/tablets). */
-    
-    /* AJUSTE: Body */
+    /* Body */
     body {
-        padding-top: 60px;                     /* Reduce espaciado superior */
+        padding-top: 60px;
     }
 
-    /* AJUSTE: Header */
+    /* Header */
     header {
-        padding: 0.8rem 0;                     /* Reduce espaciado */
+        padding: 0.8rem 0;
     }
     
     .navegacion {
-        justify-content: space-between;        /* Espaciado entre logo y menú */
+        padding: 0 1rem;
+        justify-content: space-between;
     }
 
     .logo {
-        font-size: 1.3rem;                     /* Logo más pequeño en móvil */
+        font-size: 1.3rem;
     }
 
+    /* ⭐ MOSTRAR BOTÓN HAMBURGUESA */
     .menu-toggle {
-        display: block;                        /* Muestra el botón hamburguesa */
-    }
-
-    .menu {
-        /* [FUNCIONALIDAD]: Menú hamburguesa oculto por defecto en móvil. */
-        display: none;                         /* Oculto inicialmente */
-        position: absolute;                    /* Posición absoluta */
-        top: 60px;                             /* Debajo del header */
-        left: 0;                               /* Desde la izquierda */
-        right: 0;                              /* Hasta la derecha (100% ancho) */
-        flex-direction: column;                /* Apila items verticalmente */
-        background: rgba(10, 14, 39, 0.98);    /* Fondo oscuro semitransparente */
-        padding: var(--padding-lg);            /* Espaciado interno */
-        gap: var(--padding-md);                /* Espacio entre items */
-        border-bottom: 1px solid rgba(0, 217, 255, 0.1);  /* Línea separadora */
-    }
-
-    .menu.active {
-        /* [FUNCIONALIDAD]: Menú visible cuando tiene clase 'active'. */
-        display: flex;                         /* Se muestra con Flexbox */
-    }
-
-    .menu li a {
-        padding: var(--padding-md);            /* Más relleno en móvil */
-        border-left: 3px solid var(--accent-color);  /* Borde de acento */
-    }
-
-    .menu li a::after {
-        /* [FUNCIONALIDAD]: Desactiva la línea animada en móvil. */
-        display: none;                         /* No mostrar línea de subrayado */
-    }
-    
-    /* AJUSTE: Títulos */
-    h1, .titulo {
-        font-size: 2rem;                       /* Reduce tamaño en móvil */
-    }
-    h2 {
-        font-size: 1.4rem;                     /* Reduce tamaño en móvil */
-    }
-
-    h3 {
-        font-size: 1.1rem;                     /* Reduce tamaño en móvil */
-    }
-
-    /* AJUSTE: Contenido principal */
-    .main, main {
-        /* [FUNCIONALIDAD]: Ajusta espaciado para pantallas pequeñas. */
-        margin-top: var(--padding-lg);         /* Reduce margen superior */
-        padding: 0 var(--padding-sm);          /* Reduce padding lateral */
-    }
-
-    main > div:first-child, .titulo {
-        /* [FUNCIONALIDAD]: Ajusta el contenedor de título. */
-        padding: 2rem 0;                       /* Reduce espaciado vertical */
-        margin-bottom: 1.5rem;                 /* Reduce margen inferior */
-    }
-
-    main > div:not(:first-child) {
-        /* [FUNCIONALIDAD]: Reduce espaciado en tarjetas de proyecto. */
-        padding: var(--padding-md);            /* Padding más pequeño */
-        margin-bottom: var(--padding-lg);      /* Margen más pequeño */
-    }
-
-    .foto1 {
-        /* [FUNCIONALIDAD]: Foto más pequeña en móvil. */
-        width: 100px;                          /* Reduce ancho */
-        height: 100px;                         /* Reduce alto */
-    }
-    
-    /* AJUSTE: Contacto */
-    .contacto {
-        /* [FUNCIONALIDAD]: Contacto en columna en móvil. */
-        flex-direction: column;                /* Apila botones verticalmente */
-        align-items: center;                   /* Centra los botones */
-        gap: var(--padding-sm);                /* Reduce espacio entre botones */
-    }
-
-    .contacto a {
-        /* [FUNCIONALIDAD]: Botones a ancho completo en móvil. */
-        width: 100%;                           /* Ocupa 100% del ancho */
-        max-width: 300px;                      /* Pero máximo 300px */
-        text-align: center;                    /* Centra el texto */
-    }
-
-    /* AJUSTE: Párrafos */
-    p {
-        font-size: 1rem;                       /* Tamaño de fuente reduce en móvil */
-    }
-}
-
-@media (max-width: 768px) {
-    /* [FUNCIONALIDAD]: Reglas para dispositivos MUY pequeños (móviles antiguos). */
-    
-    /* AJUSTE: Títulos */
-    h1, .titulo {
-        font-size: 1.5rem;                     /* Más pequeño aún */
-    }
-
-    h2 {
-        font-size: 1.2rem;                     /* Reduce significativamente */
-    }
-
-    /* AJUSTE: Menú */
-    .menu li a {
-        padding: var(--padding-sm);            /* Reduce padding */
-        font-size: 0.9rem;                     /* Reduce tamaño de fuente */
-    }
-
-    /* AJUSTE: Contenido */
-    main > div:not(:first-child) {
-        /* [FUNCIONALIDAD]: Más compacto en pantallas muy pequeñas. */
-        padding: var(--padding-sm);            /* Padding mínimo */
-    }
-
-    /* AJUSTE: Botones */
-    .button, .contacto a {
-        /* [FUNCIONALIDAD]: Botones más compactos. */
-        padding: 0.7rem 1.4rem;                /* Reduce padding */
-        font-size: 0.95rem;                    /* Reduce fuente */
-    }
-
-    /* AJUSTE: Especiales */
-    .logo {
-        letter-spacing: 1px;                   /* Reduce espaciado de letras */
-    }
-
-    .menu {
-        gap: var(--padding-sm);                /* Reduce espacio en menú */
-    }
-    .menu-toggle {
-        display: block;              /* ← Aparece en móvil */
+        display: block;                     /* ← Aparece */
         background: none;
         border: none;
-        color: #00d9ff;              /* O el color que uses */
+        color: var(--accent-color);
         font-size: 1.8rem;
         cursor: pointer;
         z-index: 1001;
         padding: 0.5rem;
         transition: transform 0.3s ease;
     }
-    
-    nav {
-        display: none;     /* ← Menú oculto por defecto */
+
+    .menu-toggle:hover {
+        color: var(--accent-tertiary);
+        transform: scale(1.1);
     }
-    
-    nav.active {
-        display: flex;     /* ← Menú visible cuando active */
+
+    .menu-toggle.active {
+        transform: rotate(90deg);
+    }
+
+    /* ⭐ MENÚ OCULTO POR DEFECTO */
+    nav#menu {
+        display: none;                      /* ← Oculto por defecto */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(10, 14, 39, 0.99);
+        padding: 2rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+    }
+
+    /* ⭐ MENÚ VISIBLE CUANDO ESTÁ ACTIVO */
+    nav#menu.active {
+        display: flex;                      /* ← Aparece cuando active */
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .menu li a {
+        padding: 1rem;
+        border-left: 3px solid var(--accent-color);
+        border-radius: 6px;
+        font-size: 1.1rem;
+    }
+
+    .menu li a::after {
+        display: none;
+    }
+
+    /* Títulos */
+    h1, .titulo {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Main */
+    .main, main {
+        margin-top: 1rem;
+        padding: 0 1rem;
+    }
+
+    main > div:first-child, .titulo {
+        padding: 2rem 0;
+        margin-bottom: 1.5rem;
+    }
+
+    main > div:not(:first-child) {
+        padding: var(--padding-md);
+        margin-bottom: var(--padding-lg);
+    }
+
+    .foto1 {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Contacto */
+    .contacto {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--padding-sm);
+    }
+
+    .contacto a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    /* Párrafos */
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, .titulo {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .menu li a {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
+    main > div:not(:first-child) {
+        padding: var(--padding-sm);
+    }
+
+    .button, .contacto a {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+
+    .logo {
+        letter-spacing: 1px;
     }
 }
 
